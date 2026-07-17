@@ -1,0 +1,296 @@
+/* ============================================================
+   CivicTrack — design tokens
+   Palette: asphalt dark, safety-orange + hazard-yellow accents,
+   concrete off-white text. Inspired by municipal work-order slips
+   and roadside signage.
+   ============================================================ */
+:root {
+  --asphalt-900: #17191a;
+  --asphalt-800: #1f2223;
+  --asphalt-700: #292d2e;
+  --asphalt-600: #3a3f40;
+  --concrete-100: #f1efe9;
+  --concrete-300: #c7c4bc;
+  --safety-orange: #ff6b35;
+  --hazard-yellow: #ffc145;
+  --signal-green: #4caf7d;
+
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--asphalt-900);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0);
+  background-size: 22px 22px;
+  color: var(--concrete-100);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+a { color: var(--hazard-yellow); }
+
+/* ---------- header ---------- */
+.site-header {
+  border-bottom: 3px solid var(--safety-orange);
+  padding: 22px 0;
+}
+.header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+}
+.brand-mark {
+  color: var(--safety-orange);
+  font-size: 20px;
+}
+.brand-accent { color: var(--hazard-yellow); }
+.brand-tag {
+  margin: 0;
+  color: var(--concrete-300);
+  font-size: 13px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- ticket / hero ---------- */
+.ticket {
+  margin: 40px 0 32px;
+  background: var(--asphalt-800);
+  border: 1px solid var(--asphalt-600);
+  border-radius: var(--radius);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.ticket::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-left: 6px solid var(--hazard-yellow);
+  background:
+    repeating-linear-gradient(135deg, var(--asphalt-900) 0 10px, transparent 10px 20px);
+  opacity: 0.5;
+  width: 6px;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.ticket-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--concrete-300);
+  margin-bottom: 18px;
+}
+.ticket-label { color: var(--safety-orange); font-weight: 600; }
+.ticket-no { color: var(--concrete-300); }
+
+.ticket h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 4vw, 38px);
+  margin: 0 0 10px;
+  letter-spacing: 0.01em;
+}
+.ticket-sub {
+  color: var(--concrete-300);
+  margin: 0 0 26px;
+  max-width: 52ch;
+  font-size: 15px;
+}
+
+/* ---------- upload form ---------- */
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 180px;
+  border: 2px dashed var(--asphalt-600);
+  border-radius: var(--radius);
+  background: var(--asphalt-900);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  padding: 20px;
+  text-align: center;
+}
+.dropzone:hover,
+.dropzone:focus-within {
+  border-color: var(--safety-orange);
+}
+.dropzone.has-image {
+  padding: 10px;
+}
+.dropzone-copy strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.dropzone-copy span {
+  display: block;
+  color: var(--concrete-300);
+  font-size: 13px;
+  margin-top: 4px;
+}
+.preview-img {
+  max-height: 260px;
+  width: auto;
+  max-width: 100%;
+  border-radius: 4px;
+  display: block;
+}
+
+.btn-submit {
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--asphalt-900);
+  background: var(--hazard-yellow);
+  border: none;
+  border-radius: var(--radius);
+  padding: 13px 28px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.15s ease, opacity 0.15s ease;
+}
+.btn-submit:hover:not(:disabled) { background: var(--safety-orange); color: var(--concrete-100); }
+.btn-submit:active:not(:disabled) { transform: translateY(1px); }
+.btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-submit:focus-visible,
+.dropzone:focus-visible {
+  outline: 2px solid var(--hazard-yellow);
+  outline-offset: 2px;
+}
+
+.status-line {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  min-height: 18px;
+  color: var(--concrete-300);
+}
+.status-line.is-success { color: var(--signal-green); }
+.status-line.is-error { color: var(--safety-orange); }
+
+/* ---------- dashboard ---------- */
+.dashboard { margin: 48px 0 64px; }
+.dashboard-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.dashboard-head h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+}
+.updated-at {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--concrete-300);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.plates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+.plate {
+  background: var(--asphalt-800);
+  border: 1px solid var(--asphalt-600);
+  border-top: 3px solid var(--safety-orange);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.plate[data-category="Garbage"] { border-top-color: var(--hazard-yellow); }
+.plate[data-category="Street Light"] { border-top-color: var(--signal-green); }
+
+.plate-icon {
+  font-size: 15px;
+  color: var(--concrete-300);
+}
+.plate-count {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1;
+}
+.plate-label {
+  font-size: 13px;
+  color: var(--concrete-300);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dashboard-note {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--concrete-300);
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--asphalt-700);
+  padding: 20px 0 40px;
+}
+.site-footer p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--concrete-300);
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CivicTrack — Report a City Problem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <div class="brand">
+      <span class="brand-mark">⬡</span>
+      <span class="brand-name">CIVIC<span class="brand-accent">TRACK</span></span>
+    </div>
+    <p class="brand-tag">Report it. We'll route it.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO / TICKET -->
+  <section class="ticket" aria-labelledby="ticket-heading">
+    <div class="ticket-head">
+      <span class="ticket-label">WORK ORDER</span>
+      <span class="ticket-no" id="ticket-no">#NEW</span>
+    </div>
+
+    <h1 id="ticket-heading">Spot a problem on your street?</h1>
+    <p class="ticket-sub">Upload a photo. Our system reads it automatically —
+      pothole, garbage, street light, or traffic issue — no form to fill out.</p>
+
+    <form id="report-form" class="report-form">
+      <label for="photo-input" class="dropzone" id="dropzone">
+        <input type="file" id="photo-input" accept="image/png, image/jpeg" hidden>
+        <img id="preview-img" class="preview-img" hidden alt="Selected photo preview">
+        <span class="dropzone-copy" id="dropzone-copy">
+          <strong>Choose a photo</strong>
+          <span>or drag one in — JPG or PNG</span>
+        </span>
+      </label>
+
+      <button type="submit" class="btn-submit" id="submit-btn" disabled>
+        Submit Report
+      </button>
+
+      <p class="status-line" id="status-line" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="dashboard" aria-labelledby="dashboard-heading">
+    <div class="dashboard-head">
+      <h2 id="dashboard-heading">Citywide totals</h2>
+      <span class="updated-at" id="updated-at">—</span>
+    </div>
+
+    <div class="plates">
+      <article class="plate" data-category="Pothole">
+        <span class="plate-icon">◐</span>
+        <span class="plate-count" id="count-pothole">—</span>
+        <span class="plate-label">Potholes</span>
+      </article>
+
+      <article class="plate" data-category="Garbage Collection">
+        <span class="plate-icon">▲</span>
+        <span class="plate-count" id="count-garbage">—</span>
+        <span class="plate-label">Garbage Collection</span>
+      </article>
+
+      <article class="plate" data-category="Street Light">
+        <span class="plate-icon">✦</span>
+        <span class="plate-count" id="count-streetlight">—</span>
+        <span class="plate-label">Street Lights</span>
+      </article>
+
+      <article class="plate" data-category="Traffic">
+        <span class="plate-icon">◆</span>
+        <span class="plate-count" id="count-traffic">—</span>
+        <span class="plate-label">Traffic</span>
+      </article>
+    </div>
+
+    <p class="dashboard-note">
+      Totals recalculate every 5 minutes on our servers. This page checks
+      for a refresh every 30 seconds.
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>CivicTrack — built on S3, Lambda, Rekognition &amp; RDS. No servers to babysit.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
