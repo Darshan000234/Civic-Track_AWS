@@ -265,28 +265,6 @@ The frontend periodically fetches the updated `counts.json` file and displays th
 
 ---
 
-# 🗄 Database Schema
-
-```sql
-CREATE TABLE reports (
-
-id INT AUTO_INCREMENT PRIMARY KEY,
-
-image_key VARCHAR(255),
-
-category VARCHAR(50),
-
-confidence_score FLOAT,
-
-raw_labels JSON,
-
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
-);
-```
-
----
-
 # 🛠 Technologies Used
 
 ## Frontend
