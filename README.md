@@ -12,9 +12,9 @@ CivicTrack is a fully serverless AWS project that enables citizens to report civ
 
 ---
 
-## Dashboard
+## Output
 
-![Dashboard](images/dashboard.png)
+![Dashboard](images/output.png)
 
 ---
 
